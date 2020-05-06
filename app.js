@@ -9,7 +9,7 @@ app.get("/createuser", (req, res) => {
 
 app.get("/login", (req, res) => {
 
-    return res.sendFile(__dirname + "/public/loginpage/login.html");
+    return res.sendFile(__dirname + "/public/login/login.html");
  })
 
 
