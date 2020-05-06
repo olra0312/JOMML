@@ -1,11 +1,11 @@
 {
     "scripts": {
         "start": "node app.js 3000",
-        "start-dev": "nodemon app.js",
+        "start-dev": "nodemon app.js 3000",
 
         "migrate:make": "knex migrate:make",
         "migrate:latest": "knex migrate:latest",
-        "migrate:rollback": "knex migrate:latest"
+        "migrate:rollback": "knex migrate:rollback"
     },
     "dependencies": {
         "express": "^4.17.1",
