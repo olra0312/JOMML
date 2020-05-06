@@ -1,19 +1,33 @@
 const express = require("express");
 const app = express();
 
-const fs = require("fs")
-
-
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
 app.use(express.static(__dirname + '/public'))
 
 
+const { Model } = require("objection")
+const Knex = require("knex")
+const knexfile = require("./knexfile.js")
+
+const knex = Knex(knexfile.development)
+
+Model.knex(knex)
+
+const fs = require("fs")
+
 
 
 app.get("/createuser", (req, res) => {
+    const body = fs.readFileSync("./public/createuser/createuser.html", "utf8")
 
-   return res.sendFile(__dirname + "/public/createuser/createuser.html");
+   return res.send(body)
+})
+
+app.post("/createuser",(req, res) => {
+    console.log(req.body)
+
 })
 
 
