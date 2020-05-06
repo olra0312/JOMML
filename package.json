@@ -1,8 +1,8 @@
 {   
-    "script": 
+    "scripts": 
     {
         "start": "node app.js 3000",
-        "start-dev": "nodemon app.js 3000"
+        "start-dev": "nodemon app.js"
     },
     "dependencies": {
         "express": "^4.17.1",
