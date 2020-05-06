@@ -11,7 +11,7 @@ app.get("/createuser", (req, res) => {
 
 
 
-const PORT = 3000;
+const PORT = process.argv[2];
 
 const server = app.listen(PORT, (error) => {
     if (error) {
