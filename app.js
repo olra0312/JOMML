@@ -12,7 +12,10 @@ app.get("/login", (req, res) => {
     return res.sendFile(__dirname + "/public/login/login.html");
  })
 
+ app.get("/help", (req, res) => {
 
+    return res.sendFile(__dirname + "/public/login/helppage.html");
+ })
 
 
 
