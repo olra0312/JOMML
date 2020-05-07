@@ -7,6 +7,12 @@ app.get("/createuser", (req, res) => {
    return res.sendFile(__dirname + "/public/createuser/createuser.html");
 })
 
+app.get("/updateuser", (req, res) => {
+
+    return res.sendFile(__dirname + "/public/createuser/updateuser.html");
+ }) 
+
+
 app.get("/login", (req, res) => {
 
     return res.sendFile(__dirname + "/public/loginpage/login.html");
