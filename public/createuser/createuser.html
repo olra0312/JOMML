@@ -1,31 +1,35 @@
 <h1>Opret Bruger</h1>
 
-<form action="/createuser" method="POST" name="createuser">
-    <label for="firstname">Fornavn:</label><br>
-    <input name="firstname" type="text" id="firstname"><br>
-    <label for="lastname">Efternavn:</label><br>
-    <input type="text" id="lastname" name="lastname"><br>
+<form action="/createUser" method="POST" name="createUser">
+    <label for="firstName">Fornavn:</label><br>
+    <input name="firstName" type="text" id="firstName"><br>
+
+    <label for="lastName">Efternavn:</label><br>
+    <input type="text" id="lastName" name="lastName"><br>
 
     <label for="email">Email:</label><br>
     <input type="text" id="email" name="email"><br>
-    <label for="phone_nr">Telefon nr:</label><br>
-    <input type="text" id="phone_nr" name="phonenumber"><br>
+
+    <label for="phoneNumber">Telefonnummer:</label><br>
+    <input type="text" id="phoneNumber" name="phoneNumber"><br>
 
     <label for="address">Adresse:</label><br>
-    <input type="text" id="addresse" name="address"><br>
-    <label for="zip_code">Postnr:</label><br>
-    <input type="text" id="zip_code" name="zipcode"><br>
+    <input type="text" id="address" name="address"><br>
+
+    <label for="zipCode">Postnummer:</label><br>
+    <input type="text" id="zipCode" name="zipCode"><br>
 
     <label for="city">By:</label><br>
     <input type="text" id="city" name="city"><br>
 
     <label for="username">Brugernavn:</label><br>
     <input type="text" id="username" name="username"><br>
+
     <label for="password">Kodeord:</label><br>
     <input type="text" id="password" name="password"><br>
 
-    <label for="confirmpassword">Bekræft Kodeord:</label><br>
-    <input type="text" id="confirmpassword" name="confirmpassword"><br>
+    <label for="confirmPassword">Bekræft kodeord:</label><br>
+    <input type="text" id="confirmPassword" name="confirmPassword"><br>
 
     <input type="submit" value="Opret">
 </form>

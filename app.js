@@ -19,13 +19,34 @@ const fs = require("fs")
 
 
 
-app.get("/createuser", (req, res) => {
-    const body = fs.readFileSync("./public/createuser/createuser.html", "utf8")
+app.get("/createUser", (req, res) => {
+    const body = fs.readFileSync("./public/createUser/createUser.html", "utf8")
 
    return res.send(body)
 })
 
-app.post("/createuser",(req, res) => {
+const User = require("./models/User.js");
+
+app.post("/createUser",(req, res) => {
+    try {
+    User.query().insert({ 
+        first_name: req.body.firstName, 
+        last_name: req.body.lastName,
+        email: req.body.email,
+        phone_number: req.body.phoneNumber,
+        address: req.body.address,
+        zip_code: req.body.zipCode,
+        city: req.body.city,
+        username: req.body.username,
+        password: req.body.password
+    }).then(createdUser => { 
+        return res.send( { response: `The user ${createdUser.username} was created`})
+    }); 
+
+    } catch {
+        
+    }
+
     console.log(req.body)
 
 })
