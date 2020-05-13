@@ -29,7 +29,7 @@ router.post("/createUser",(req, res) => {
     }); 
 
     } catch {
-
+        
     }
     console.log(req.body);
 });
