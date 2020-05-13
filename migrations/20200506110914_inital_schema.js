@@ -14,9 +14,19 @@ exports.up = function(knex) {
     table.string("city")
   })
 
+  .createTable("advertisements", table => {
+    table.string("book_name").notNullable()
+    table.string("author").notNullable()
+    table.string("publisher")
+    table.integer("isbn")
+    table.integer("edition")
+    table.integer("price").notNullable()
+    table.string("condition")
+  })
 };
 
 exports.down = function(knex) {
   return knex.schema
   .dropTableIfExists("users")
+  .dropTableIfExists("advertisements")
 };

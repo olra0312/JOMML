@@ -10,6 +10,11 @@ app.use(express.json())
 const userRouter = require('./routes/userRouter.js');
 app.use(userRouter);
 
+//Advertisement router reference.
+const advertisementRouter = require('./routes/advertisementRouter.js');
+app.use(advertisementRouter);
+
+
 //Getting access to static files such as CSS, images, videos etc.
 app.use(express.static(__dirname + '/public'))
 
