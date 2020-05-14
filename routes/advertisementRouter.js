@@ -9,12 +9,12 @@ router.get("/createAdvertisement", (req, res) => {
    return res.send(body);
 })
 
-const User = require("../models/Advertisement.js");
+const Advertisement = require("../models/Advertisement.js");
 
 router.post("/createAdvertisement",(req, res) => {
     try {
         
-    User.query().insert({ 
+    Advertisement.query().insert({ 
         book_name: req.body.bookName, 
         author: req.body.author,
         publisher: req.body.publisher,
