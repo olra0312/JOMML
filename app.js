@@ -25,14 +25,10 @@ Model.knex(knex)
 //Defining file system as a standard library.
 const fs = require("fs")
 
-<<<<<<< HEAD
 app.get("/createUser", (req, res) => {
 
    return res.sendFile(__dirname + "/public/createUser/createUser.html");
 })
-=======
-
->>>>>>> master
 
 app.get("/updateUser", (req, res) => {
 
