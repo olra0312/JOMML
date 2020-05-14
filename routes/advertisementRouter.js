@@ -4,9 +4,11 @@ const fs = require("fs");
 
 
 router.get("/createAdvertisement", (req, res) => {
-   const body = fs.readFileSync("./public/createAdvertisement/createAdvertisement.html", "utf8");
+    const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
+    const body = fs.readFileSync("./public/createAdvertisement/createAdvertisement.html", "utf8");
+    const foot = fs.readFileSync("./public/footer/footer.html");
 
-   return res.send(body);
+    return res.send(head + body + foot);
 })
 
 const Advertisement = require("../models/Advertisement.js");
