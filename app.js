@@ -69,7 +69,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 //Checks if the user input is the same as in the database//
-app.post('/auth', function(request, response) {
+app.post('/home', function(request, response) {
 	var username = request.body.username;
 	var password = request.body.password;
 	if (username && password) {
