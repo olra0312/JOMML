@@ -2,20 +2,20 @@ const express = require("express");
 const app = express();
 
 
-app.get("/createuser", (req, res) => {
+app.get("/createUser", (req, res) => {
 
-   return res.sendFile(__dirname + "/public/createuser/createuser.html");
+   return res.sendFile(__dirname + "/public/createUser/createUser.html");
 })
 
-app.get("/updateuser", (req, res) => {
+app.get("/updateUser", (req, res) => {
 
-    return res.sendFile(__dirname + "/public/createuser/updateuser.html");
+    return res.sendFile(__dirname + "/public/createUser/updateUser.html");
  }) 
 
 
 app.get("/login", (req, res) => {
 
-    return res.sendFile(__dirname + "/public/loginpage/login.html");
+    return res.sendFile(__dirname + "/public/login/login.html");
  })
 
 
