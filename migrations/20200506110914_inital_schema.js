@@ -15,6 +15,7 @@ exports.up = function(knex) {
   })
 
   .createTable("advertisements", table => {
+    table.increments("id")
     table.string("book_name").notNullable()
     table.string("author").notNullable()
     table.string("publisher")
