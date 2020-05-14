@@ -11,7 +11,9 @@ const userRouter = require('./routes/userRouter.js');
 app.use(userRouter);
 
 //Getting access to static files such as CSS, images, videos etc.
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + 'public'))
+app.use(express.static(__dirname + "/public/createUser"))
+
 
 //Defining objection model and knex library.
 const { Model } = require("objection")

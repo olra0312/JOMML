@@ -4,9 +4,11 @@ const fs = require("fs");
 
 
 router.get("/createUser", (req, res) => {
+   const nav = fs.readFileSync("./public/navbar/navbar.html", "utf8"); 
    const body = fs.readFileSync("./public/createUser/createUser.html", "utf8");
+   const foot = fs.readFileSync("./public/footer/footer.html", "utf8")
 
-   return res.send(body);
+   return res.send(nav + body + foot);
 })
 
 const User = require("../models/User.js");
