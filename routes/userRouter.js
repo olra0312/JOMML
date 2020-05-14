@@ -13,7 +13,6 @@ router.get("/createUser", (req, res) => {
 
 const User = require("../models/User.js");
 
-//Validation
 router.post("/createUser",(req, res) => {
     const { password, 
             confirmPassword,
@@ -28,79 +27,107 @@ router.post("/createUser",(req, res) => {
 
    
     try{
-        //Password validation
         if (password && confirmPassword && firstName && lastName && email && phoneNumber && address && zipCode && city && username) {
             
-            const CapLetterRegex = /[A-Z]+/g
-            const NumbersRegex = /[0-9]/g
-            const EmailRegex = /[@]+/g
-            const PhoneRegex = /\d{8}/g
-            const ZipRegex = /\d{4}/g
-            const wordRegex = /\w+/g
-
+            // Regular Expressions
+            // Searching for Capital letters in range A-Z
+            const capLetterRegex = /[A-Z]+/g
+            // Searching for digits in range 0-9
+            const numbersRegex = /[0-9]/g
+            // Searching for @
+            const emailRegex = /[@]+/g
+            // Searching for 8 digits
+            const phoneRegex = /\d{8}/g
+            // Searching for 4 digits
+            const zipRegex = /\d{4}/g
+            // Searching for whitespaces
+            const whiteSpaceRegex = /\s/g
+            
+            //Password validation
             if (password && confirmPassword) {
-
+                
+                //Checking the length of the password
                 if (password.length < 8) {
                     return res.status(400).send({ response: "Password must be 8 characters or longer"});
                 } 
-                    
+                   
+                //Checking if password and confirmPassword is the same
                 if (password !== confirmPassword) {
                     return res.status(400).send({ response: "Password and confirm password needs to be the same"});
                 } 
-                    
-                if (CapLetterRegex.test(password) == false){
+                
+                //Checking if the password contains a minimum of one capital letter
+                if (capLetterRegex.test(password) == false){
                     return res.status(400).send({ response: "Password should contain minimum one capital letter"});
                 }
 
-                if (NumbersRegex.test(password) == false) {
+                //Checking if the password contains a minimum of one digit
+                if (numbersRegex.test(password) == false) {
                     return res.status(400).send({ response: "Password should contain minimum one digit"});
                 }
-                
+            
+            //Email validation
             if (email) {
-                if (!email.match(EmailRegex)) {
-                    return res.status(400).send({ response: "Email skal indeholde @"});
+                //Checking that the email contains a @
+                if (!email.match(emailRegex)) {
+                    return res.status(400).send({ response: "Email must contain @"});
                 } 
             }
 
+            //Phone number validation
             if (phoneNumber){
-                if(!phoneNumber.match(PhoneRegex)){
+
+                //Checking that the phone number contains 8 digits
+                if(!phoneNumber.match(phoneRegex)){
                     return res.status(400).send({ response: "Phonenumber should contain 8 digits"});
                 }
 
+                //Checking that the phone number has no more than 8 digits
                 if (phoneNumber.length > 8) {
                     return res.status(400).send({ response: "Phonenumber must be 8 digits long"});
                 }
             }
 
+            //Zip code validation
             if (zipCode) {
-                if (!zipCode.match(ZipRegex)){
+
+                //Checking that th zip code is 4 digits
+                if (!zipCode.match(zipRegex)){
                     return res.status(400).send({ response: "Zipcode should contain 4 digits"});
                 }
 
+                //Checking that the zip code has no more that 4 digits.
                 if (zipCode.length > 4) {
                     return res.status(400).send({ response: "Zipcode must be 4 digits long"});
                 } 
             }
 
+            //Input Validation
             if(firstName && lastName && address && city && username) {
-                if(!firstName.match(wordRegex)) {
-                    return res.status(400).send({ response: "Cannot be null"});
+
+                //Checking that the input is whitespace
+                if (firstName.match(whiteSpaceRegex)){
+                    return res.status(400).send({ response: "Firstname cannot be whitespace"});
                 }
 
-                if(!lastName.match(wordRegex)) {
-                    return res.status(400).send({ response: "Cannot be null"});
+                //Checking that the input is whitespace
+                if(lastName.match(whiteSpaceRegex)) {
+                    return res.status(400).send({ response: "Lastname cannot be whitespace"});
                 }
 
-                if(!address.match(wordRegex)) {
-                    return res.status(400).send({ response: "Cannot be null"});
+                //Checking that the input is whitespace
+                if(address.match(whiteSpaceRegex)) {
+                    return res.status(400).send({ response: "Address cannot be whitespace"});
                 }
 
-                if(!city.match(wordRegex)) {
-                    return res.status(400).send({ response: "Cannot be null"});
+                //Checking that the input is whitespace
+                if(city.match(whiteSpaceRegex)) {
+                    return res.status(400).send({ response: "City cannot be whitespace"});
                 }
 
-                if(!username.match(wordRegex)) {
-                    return res.status(400).send({ response: "Cannot be null"});
+                //Checking that the input is whitespace
+                if(username.match(whiteSpaceRegex)) {
+                    return res.status(400).send({ response: "Username cannot contain whitespaces"});
                 }
             }
 
@@ -122,9 +149,8 @@ router.post("/createUser",(req, res) => {
         } 
         } 
         } catch {
-                
-    }
     
+    }
     console.log(req.body);
 });
 
