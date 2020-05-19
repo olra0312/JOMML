@@ -30,7 +30,6 @@ router.get("/login", (req, res) => {
         const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
         const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
         const page = fs.readFileSync("./public/home/home.html", "utf8");
-        console.log(1, "home");
         return res.send(head + page + foot);
     } else {
         return res.redirect("/login");
@@ -38,8 +37,6 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/getUsername", (req, res) => {
-    console.log(req.session, "1");
-    console.log(req.session, "hej");
     return res.send({ response: req.session });
  });
 

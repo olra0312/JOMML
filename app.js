@@ -23,13 +23,13 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/home'));
 
 //Defining objection model and knex library.
-const { Model } = require("objection")
-const Knex = require("knex")
-const knexfile = require("./knexfile.js")
+const { Model } = require("objection");
+const Knex = require("knex");
+const knexfile = require("./knexfile.js");
 
 //Creating connection to database.
 const knex = Knex(knexfile.development)
-Model.knex(knex)
+Model.knex(knex);
 
 
 app.use(bodyParser.urlencoded({extended : true}));
