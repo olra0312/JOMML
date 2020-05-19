@@ -2,11 +2,8 @@ const router = require('express').Router();
 const User = require("../models/User.js");
 const session = require('express-session');
 
-
-
 //Defining file system as a standard library.
 const fs = require("fs");
-
 
 //GET METHODS
 router.get("/createUser", (req, res) => {
@@ -38,7 +35,7 @@ router.get("/login", (req, res) => {
 
 router.get("/getUsername", (req, res) => {
     return res.send({ response: req.session });
- });
+});
 
 
 //POST METHODS
@@ -69,17 +66,11 @@ router.post("/createUser",(req, res) => {
 router.post('/home', async (req, res) => {
     const { username, password } = req.body;
     try {
-        console.log(1);
         const accountInfo = await User.query().select("username", "password").where("username", username);
-        console.log(accountInfo);
         if (accountInfo.length === 1) {
-            console.log(3);
             if (password === accountInfo[0].password) {
-                console.log(4, req.session);
                 req.session.login = true;
                 req.session.username = username;
-                console.log(req.session.username);
-                console.log(req.session.login);
                 return res.redirect("/home");
             }
         }
