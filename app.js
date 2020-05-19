@@ -14,7 +14,7 @@ app.get("/login", (req, res) => {
 
  app.get("/help", (req, res) => {
 
-    return res.sendFile(__dirname + "/public/login/helppage.html");
+    return res.sendFile(__dirname + "/public/helppage/helppage.html");
  })
 
 
