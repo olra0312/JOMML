@@ -31,3 +31,4 @@ exports.down = function(knex) {
   .dropTableIfExists("users")
   .dropTableIfExists("advertisements")
 };
+ 
