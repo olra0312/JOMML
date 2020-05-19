@@ -1,23 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="js" type="text/js" href="helpbot.js">
+<html>
+  <head>
+    <title>Helpbot</title>
+  </head>
+  <body>
+    <div class="chat">
+      <div class="messages"></div>
+      <div id="edge"></div>
+      <form class="actions">
+        <input type="text" placeholder="press 'Enter' to send...">
+      </form>     
+    </div>
+    
+    <script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script>
     <script src="helpbot.js"></script>
-    <title>Hjælp</title>
-</head>
-<body>
-    <h1>Hjælpe bot</h1>
-
-    <p>
-        Send: <input id="user_input"></input>
-        <button id="submit">Send</button>
-    </p>
-
-    <p>
-        Svar: <span id="output">
-    </p>
-
-</body>
+    <style>
+    * {
+    font-family: Courier;
+    font-size: 11pt;
+  }
+  
+  .chat {
+    width: 30em;
+    height: 50%;
+    position: auto;
+    overflow: scroll;
+  }
+  
+  .actions {
+    position: auto;
+    display: block;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .actions input{
+    height: 30px;
+    display: block;
+    width: 100%;
+    outline: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+  
+  .messages div {
+    max-width: 60%;
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 7px;
+  }
+  
+  .messages .bot {
+    text-align: left;
+    margin-right: auto;
+    background: lightblue;
+  }
+  
+  .messages .self {
+    text-align: right;
+    margin-left: auto;
+    background: #DDD
+  }
+    </style>
+  </body>
 </html>

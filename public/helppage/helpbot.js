@@ -1,25 +1,39 @@
+let bot = new RiveScript();
 
-function setup() {
+const message_container = document.querySelector('.messages');
+const form = document.querySelector('form');
+const input_box = document.querySelector('input');
 
-    let bot = new RiveScript();
-    bot.loadFile("brain.rive", brainReady, brainError);
+const brains = 'brain.rive';
+ 
 
-    function brainReady(){
-        console.log('Chatbotten fejlede')
-    }
+bot.loadFile(brains).then(botReady).catch(botNotReady);
 
-    function brainError(){
-        console.log('Chatbotten er klar!')
-    }
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  selfReply(input_box.value);
+  input_box.value = '';
+});
 
-    let button = select('#submit');
-    let user_input = select('#user_input');
-    let output = select('#output');
+function botReply(message){
+  message_container.innerHTML += '<div class="bot">${message}</div>';
+  location.href = '#edge';
+}
 
-    button.mousePressed(chat);
+function selfReply(message){
+  message_container.innerHTML += '<div class="self">${message}</div>';
+  location.href = '#edge';
+  
+  bot.reply("local-user", message).then(function(reply) {
+    botReply(reply);
+  });
+}
 
-    function chat() {
-        let input = user_input.value();
-        output.html(input);
-    }
+function botReady(){
+  bot.sortReplies();
+  botReply('Hello');
+}
+
+function botNotReady(err){
+  console.log("An error has occurred.", err);
 }
