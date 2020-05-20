@@ -1,18 +1,44 @@
 const router = require('express').Router();
+const User = require("../models/User.js");
+const session = require('express-session');
+
 //Defining file system as a standard library.
 const fs = require("fs");
 
-
+//GET METHODS
 router.get("/createUser", (req, res) => {
-   const nav = fs.readFileSync("./public/navbar/navbar.html", "utf8"); 
-   const body = fs.readFileSync("./public/createUser/createUser.html", "utf8");
-   const foot = fs.readFileSync("./public/footer/footer.html", "utf8")
+    const nav = fs.readFileSync("./public/navbar/navbar.html", "utf8"); 
+    const page = fs.readFileSync("./public/createUser/createUser.html", "utf8");
+    const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+    return res.send(nav + page + foot);
+});
 
-   return res.send(nav + body + foot);
-})
+router.get("/updateUser", (req, res) => {
+    const page = fs.readFileSync("./public/createUser/updateUser.html", "utf8");
+    return res.send(page);
+}); 
 
-const User = require("../models/User.js");
+router.get("/login", (req, res) => {
+    const page = fs.readFileSync("./public/login/login.html", "utf8")
+    return res.send(page);
+});
 
+ router.get("/home", (req, res) => {
+    if(req.session.login) {
+        const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
+        const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+        const page = fs.readFileSync("./public/home/home.html", "utf8");
+        return res.send(head + page + foot);
+    } else {
+        return res.redirect("/login");
+    }
+});
+
+router.get("/getUsername", (req, res) => {
+    return res.send({ response: req.session });
+});
+
+//POST METHODS
 //Validation
 router.post("/createUser",(req, res) => {
     const { password, 
@@ -126,6 +152,30 @@ router.post("/createUser",(req, res) => {
     }
     
     console.log(req.body);
+});
+
+//Checks if the user input is the same as in the database//
+router.post('/home', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const accountInfo = await User.query().select("username", "password").where("username", username);
+        if (accountInfo.length === 1) {
+            if (password === accountInfo[0].password) {
+                req.session.login = true;
+                req.session.username = username;
+                return res.redirect("/home");
+            }
+        }
+    }
+    catch(error) {
+        return res.send(error);
+    }
+});
+
+router.post("/logout", (req, res) => {
+    req.session.login = undefined;
+    req.session.username = undefined;
+    return res.redirect("/login");
 });
 
 module.exports = router;
