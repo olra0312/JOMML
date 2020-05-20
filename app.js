@@ -14,6 +14,10 @@ app.use(userRouter);
 const advertisementRouter = require('./routes/advertisementRouter.js');
 app.use(advertisementRouter);
 
+//Browse books router reference.
+const browseBooksRouter = require('./routes/browseBooks.js');
+app.use(browseBooksRouter);
+
 
 //Getting access to static files such as CSS, images, videos etc.
 app.use(express.static(__dirname + 'public'))
