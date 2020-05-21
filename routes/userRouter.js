@@ -159,14 +159,16 @@ router.post('/home', async (req, res) => {
     const { username, password } = req.body;
     try {
         const accountInfo = await User.query().select("username", "password").where("username", username);
+        if (accountInfo.length !== 1) {
+            return res.redirect("/login")
+        }
+        
         if (accountInfo.length === 1) {
             if (password === accountInfo[0].password) {
                 req.session.login = true;
                 req.session.username = username;
                 return res.redirect("/home");
-            } else {
-                return res.redirect("/login");
-            }
+            } 
         }
     }
     catch(error) {
