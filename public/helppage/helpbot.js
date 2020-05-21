@@ -4,8 +4,7 @@ const message_container = document.querySelector('.messages');
 const form = document.querySelector('form');
 const input_box = document.querySelector('input');
 
-const brains = 'brain.rive';
- 
+const brains = 'brain.rive'
 
 bot.loadFile(brains).then(botReady).catch(botNotReady);
 
@@ -16,14 +15,15 @@ form.addEventListener('submit', (e) => {
 });
 
 function botReply(message){
-  message_container.innerHTML += '<div class="bot">${message}</div>';
+  message_container.innerHTML += `<div class="bot">${message}</div>`;
   location.href = '#edge';
+  input_box.focus();
 }
 
 function selfReply(message){
-  message_container.innerHTML += '<div class="self">${message}</div>';
+  message_container.innerHTML += `<div class="self">${message}</div>`;
   location.href = '#edge';
-  
+
   bot.reply("local-user", message).then(function(reply) {
     botReply(reply);
   });
