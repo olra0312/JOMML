@@ -164,6 +164,8 @@ router.post('/home', async (req, res) => {
                 req.session.login = true;
                 req.session.username = username;
                 return res.redirect("/home");
+            } else {
+                return res.redirect("/login");
             }
         }
     }
