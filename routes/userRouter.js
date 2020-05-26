@@ -6,6 +6,11 @@ const session = require('express-session');
 const fs = require("fs");
 
 //GET METHODS
+router.get("/", (req, res) => {
+    const page = fs.readFileSync("./public/login/login.html", "utf8")
+    return res.send(page);
+});
+
 router.get("/createUser", (req, res) => {
     if(!req.session.login){
     const nav = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8"); 
