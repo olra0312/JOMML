@@ -131,7 +131,6 @@ router.post("/createUser",(req, res) => {
             }
 
             User.query().insert({
-
                 first_name: req.body.firstName, 
                 last_name: req.body.lastName,
                 email: req.body.email,
@@ -147,8 +146,7 @@ router.post("/createUser",(req, res) => {
   
         } 
         } 
-        } catch {
-                
+        } catch {      
     }
     
     console.log(req.body);

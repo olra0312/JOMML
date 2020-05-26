@@ -36,7 +36,7 @@ const Knex = require("knex");
 const knexfile = require("./knexfile.js");
 
 //Creating connection to database.
-const knex = Knex(knexfile.development)
+const knex = Knex(knexfile.development);
 Model.knex(knex);
 
 
