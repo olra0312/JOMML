@@ -1,23 +1,49 @@
+//Setting up the express library from NPM to create a server.
 const express = require("express");
 const app = express();
+
 app.use(express.static(__dirname + "/public/helppage"))
+const mysql = require('mysql');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
 
-app.get("/createuser", (req, res) => {
+//Passing jSON-objects and form data in HTML-files.
+app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
-   return res.sendFile(__dirname + "/public/createuser/createuser.html");
-})
+app.use(session({
+	secret: 'secret',
+	resave: false,
+	saveUninitialized: true
+}));
+//User router reference.
+const userRouter = require('./routes/userRouter.js');
+app.use(userRouter);
 
-app.get("/login", (req, res) => {
+//Advertisement router reference.
+const advertisementRouter = require('./routes/advertisementRouter.js');
+app.use(advertisementRouter);
 
-    return res.sendFile(__dirname + "/public/login/login.html");
- })
+
+//Getting access to static files such as CSS, images, videos etc.
 
  app.get("/help", (req, res) => {
-
     return res.sendFile(__dirname + "/public/helppage/helppage.html");
  })
 
+//Defining objection model and knex library.
+const { Model } = require("objection");
+const Knex = require("knex");
+const knexfile = require("./knexfile.js");
+
+//Creating connection to database.
+const knex = Knex(knexfile.development);
+Model.knex(knex);
+
+
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json());
 
 
 const PORT = process.argv[2];
