@@ -21,8 +21,14 @@ router.get("/createUser", (req, res) => {
 });
 
 router.get("/updateUser", (req, res) => {
+    if(req.session.login){
+    const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
     const page = fs.readFileSync("./public/createUser/updateUser.html", "utf8");
-    return res.send(page);
+    const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+    return res.send(head + page + foot);
+    } else {
+        return res.redirect("/login");
+    }
 }); 
 
 router.get("/login", (req, res) => {
