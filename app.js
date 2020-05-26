@@ -29,6 +29,8 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/home'));
 app.use(express.static(__dirname + "/public/createUser"))
 
+app.use(express.static(__dirname + "/public/pictures"))
+
 
 //Defining objection model and knex library.
 const { Model } = require("objection");

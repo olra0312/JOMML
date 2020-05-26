@@ -1,40 +1,52 @@
 
+<div style="text-align: center; padding-left: 1em;">
 
+    <h1>Opret Bruger</h1>
 
-<h1>Opret Bruger</h1>
+    <form action="/createUser" method="POST" name="createUser" onsubmit="return formValidation()">
+        <div class="row">
+            <div class="col-sm">
+        <label for="firstName">Fornavn:</label><br>
+        <input name="firstName" type="text" id="firstName" class="form-control-sm"><br>
 
-<form action="/createUser" method="POST" name="createUser" onsubmit="return formValidation()">
-    <label for="firstName">Fornavn:</label><br>
-    <input name="firstName" type="text" id="firstName"><br>
+        <label for="lastName">Efternavn:</label><br>
+        <input type="text" id="lastName" name="lastName" class="form-control-sm"><br>
 
-    <label for="lastName">Efternavn:</label><br>
-    <input type="text" id="lastName" name="lastName"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" class="form-control-sm"><br>
+        
+        <label for="phoneNumber">Telefonnummer:</label><br>
+        <input type="number" id="phoneNumber" name="phoneNumber" class="form-control-sm"><br>
 
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email"><br>
+        </div>
 
-    <label for="phoneNumber">Telefonnummer:</label><br>
-    <input type="number" id="phoneNumber" name="phoneNumber"><br>
+        <div class="col-sm">
+        <label for="address">Adresse:</label><br>
+        <input type="text" id="address" name="address" class="form-control-sm"><br>
 
-    <label for="address">Adresse:</label><br>
-    <input type="text" id="address" name="address"><br>
+        <label for="zipCode">Postnummer:</label><br>
+        <input type="number" id="zipCode" name="zipCode" class="form-control-sm"><br>
+        <label for="city">By:</label><br>
+        <input type="text" id="city" name="city" class="form-control-sm"><br>
+        </div>
+        <div class="col-sm">
+        <label for="username">Brugernavn:</label><br>
+        <input type="text" id="username" name="username" class="form-control-sm"><br>
 
-    <label for="zipCode">Postnummer:</label><br>
-    <input type="number" id="zipCode" name="zipCode"><br>
+        <label for="password">Kodeord:</label><br>
+        <input type="password" id="password" name="password" class="form-control-sm"><br>
 
-    <label for="city">By:</label><br>
-    <input type="text" id="city" name="city"><br>
+        <label for="confirmPassword">Bekræft kodeord:</label><br>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control-sm"><br> <br>
+        </div>
 
-    <label for="username">Brugernavn:</label><br>
-    <input type="text" id="username" name="username"><br>
+        </div>
 
-    <label for="password">Kodeord:</label><br>
-    <input type="password" id="password" name="password"><br>
+        <input type="submit" value="Opret" id="submit" class="btn btn-primary"> <br>
+    
+    </form>
 
-    <label for="confirmPassword">Bekræft kodeord:</label><br>
-    <input type="password" id="confirmPassword" name="confirmPassword"><br>
+    <script src="./createUser.js"></script>
 
-    <input type="submit" value="Opret" id="submit">
-</form>
+</div>
 
-<script src="./createUser.js"></script>

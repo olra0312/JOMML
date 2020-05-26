@@ -7,10 +7,17 @@ const fs = require("fs");
 
 //GET METHODS
 router.get("/createUser", (req, res) => {
-    const nav = fs.readFileSync("./public/navbar/navbar.html", "utf8"); 
+    if(!req.session.login){
+    const nav = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8"); 
     const page = fs.readFileSync("./public/createUser/createUser.html", "utf8");
     const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+
     return res.send(nav + page + foot);
+    }
+    else {
+        return res.redirect("/home")
+    }
+
 });
 
 router.get("/updateUser", (req, res) => {
@@ -142,7 +149,7 @@ router.post("/createUser",(req, res) => {
                 username: req.body.username,
                 password: req.body.password
             }).then(createdUser => { 
-                return res.send( { response: `The user ${createdUser.username} was created`});
+                return res.redirect("/login")
             })
   
         } 
