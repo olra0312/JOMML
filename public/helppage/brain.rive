@@ -1,0 +1,291 @@
+! version = 2.0
+! local concat = newline
+
++ hej
+- Hejsa. Hvad kan jeg hjælpe dig med?
+
++ mit navn er *
+- Hvad kan jeg hjaelpe dig med <star>?
+- Hej <star>! Hvad kan jeg hjælpe dig med?
+
++ jeg hedder *
+@ mit navn er *
+
++ tak
+- Det var så lidt.
+- Glad for jeg kunne hjælpe.
+- Hav en god dag.
+
++ tak skal du have
+@ tak
+
++ tak for hjaelpen
+@ tak
+
++ mange tak
+@ tak
+
++ tusind tak
+@ tak
+
++ soegning
+- Du søger ved at indtaste et søgeord oppe i navigationsbarens søgefeldt. 
+^ Tryk derefter "Søg". 
+^ Andet jeg kan hjælpe med?
+
++ hvordan soeger man
+@ soegning
+
++ soege
+@ soegning
+
++ * soege
+@ soegning
+
++ * soege *
+@ soegning
+
++ soege *
+@ soegning
+
++ soegefunktion
+@ soegning
+
++ jeg vil gerne soege
+@ soegning
+
++ soeg
+@ soegning
+
++ * soeg
+@ soegning
+
++ soeg *
+@ soegning
+
++ * soeg *
+@ soegning
+
++ hvordan har du det
+- Jeg er en robot fanget i en computer... Jeg har det fantastisk! 
+^ Hvad kan jeg hjælpe dig med?
+- Helt fint tak. Hvad kan jeg hjælpe med? 
+
++ opret annonce
+- Du opretter en annonce ved først at trykke på "Opret annonce" i navigationsbaren. 
+^ Derefter indtaster du blot indformationerne på siden. 
+^ Andet jeg kan hjælpe med?
+
++ * opret annonce
+@ opret annonce
+
++ * opret annonce *
+@ opret annonce
+
++ opret annonce *
+@ opret annonce
+
++ hvordan opretter jeg en annonce
+@ opret annonce
+
++ hvordan saelger jeg en bog
+@ opret annonce
+
++ hvordan opretter jeg en bog
+@ opret annonce
+
++ opret bog
+@ opret annonce
+
++ saelg bog
+@ opret annonce
+
++ * saelg bog
+@ opret annonce
+
++ * saelg bog *
+@ opret annonce
+
++ saelg bog *
+@ opret annonce
+
++ log ud
+- Oppe i navogationsbaren kan du se en "Log ud"-knap. 
+^ Trykker du på denne vil du blive logget ud af din bruger. 
+^ Kan jeg hjælpe med noget andet?
+
++ * log ud
+@ log ud
+
++ * log ud *
+@ log ud
+
++ log ud *
+@ log ud
+
++ hvordan logger jeg ud
+@ log ud
+
++ logge ud
+@ log ud
+
++ hvordan logger man ud
+@ log ud
+
++ logud
+@ log ud
+
++ logout
+@ log ud
+
++ quit
+@ log ud
+
++ udgang
+@ log ud
+
++ hjaelp
+- Jeg kan hjælpe dig! 
+^ Bare skriv hvad du har brug for hjælp til, 
+^ og tryk derefter "Enter".
+
++ hjaelp mig
+@ hjaelp
+
++ * hjaelpe mig
+@ hjaelp
+
++ jeg har brug for hjalp
+@ hjaelp
+
++ opret bruger
+- Du opretter en bruger ude på login siden. 
+^ Tryk "opret bruger", og udfyld informationen på siden. 
+^ Derefter trykker du "Opret".
+^ Du vil nu kunne logge ind med det brugernavn og password, som du angav. 
+^ Er der andet jeg kan hjælpe med?
+
++ * opret bruger *
+@ opret bruger
+
++ * opret bruger
+@ opret bruger
+
++ opret bruger *
+@ opret bruger
+
++ * opretter bruger *
+@ opret bruger
+
++ * opretter jeg en bruger
+@ opret bruger
+
++ * bruger opret * 
+@ opret bruger
+
++ oprettelse af bruger
+@ opret bruger
+
++ jeg vil gerne oprette en bruger
+@ opret bruger
+
++ hvordan opretter jeg en bruger
+@ opret bruger
+
++ navigation
+- Du navigerer siden ved at benytte navigationsbjælken i toppen. 
+^ Andet jeg kan hjælpe med?
+
++ naviger
+@ navigation
+
++ * navigere *
+@ navigation
+
++ * navigerer *
+@ navigation
+
++ * finde rundt *
+@ navigation
+
++ find rundt
+@ navigation
+
++ discord
+- Du kan joine vores Discord-server "ShopStudieBøger.dk".
+^ Her vil du kunne finde yderligere hjælp, 
+^ og måske få en god deal på en bog fra en anden bruger? 
+^ Du kan også skrive med vores medarbejdere, 
+^ eller spørge os til råds omkring køb og salg af brugte studiebøger, 
+^ samt få hjælp hvis ikke jeg kan løse dit problem. 
+^ Er der andet jeg kan hjælpse med?
+
++ * discord
+@ discord
+
++ discord *
+@ discord
+
++ * discord *
+@ discord
+
++ * discordserver *
+@ discord
+
++ * discordserver
+@ discord
+
++ discordserver
+@ discord
+
++ jeg hader dig
+- Hey! Det var da tarveligt sagt! 
+^ Jeg taler ikke mere med dig med mindre du siger undskyld!{topic=undskyld}
+
+> topic undskyld
+
+  // This will match if the word "sorry" exists ANYWHERE in their message
+  + [*] undskyld [*]
+  - Okay, jeg tilgiver dig!{topic=random}
+
+  + *
+  - Nope, ikke før du siger undskyld.
+  - Sig undskyld!
+
+< topic
+
++ *
+- Beklager, men jeg forstod ikke hvad du forsøgte at sige
+- Den fik jeg ikke fat i. Prøv igen.
+- Den besked forstod jeg ikke. Prøv igen.
+
+// The Botmaster's Name
+! var master = localuser
+
+// Bot Variables
+! var navn     = Bogbot
+! var alder    = 1
+! var fødseldag= 20. maj
+! var lokation = Danmark
+! var by       = København
+! var øjne     = LED
+! var hår      = Skaldet
+! var farve    = blå
+! var band     = RELENTLESS DOPPELGANGER
+! var bog      = Kuroi Jukai
+! var job      = robot
+
+
+// Set arrays
+! array hankøn     = han mand dude boi man gentleman boiii 
+! array hunkøn     = hun kvinde dame babe pige 
+! array mennoun    = han mænd dudes bois men gentlemen boiiis
+! array womennoun  = hun kvinder damer babes piger
+! array lol        = lol lmao rofl rotfl haha hahaha hehe hehehe 
+! array farver     = hvid sort orange rød blå grøn gul grå brun turquoise pink lyserød lilla guld sølv
+! array længder    = høj lang bred tyk bred fed
+! array måling     = inch centimeter cm millimeter mm meter m inches
+! array ja         = yes yeah yep yup ya yea jaer jar jep jeps jo jaja jajaja jojo jojojo jarjar si hai tjo tja oui okay
+! array nej        = niet nah nope nay no næh næ nein niks 
+! array søgning    = søge søg søgefunktion søger
+! array opret      = annonce opslag
