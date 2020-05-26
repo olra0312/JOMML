@@ -31,7 +31,9 @@ function selfReply(message){
 
 function botReady(){
   bot.sortReplies();
-  botReply('Hello');
+  botReply('Hejsa!');
+  botReply('Hvad kan jeg hjaelpe med?');
+
 }
 
 function botNotReady(err){

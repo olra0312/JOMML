@@ -1,26 +1,188 @@
 ! version = 2.0
+! local concat = newline
 
-+ hi
-- hi, what is your name?
++ hej
+- Hejsa. Hvad kan jeg hjælpe dig med?
 
-+ my name is *
-- nice to meet you <star>
-- nice meeting you <star>
++ mit navn er *
+- Hvad kan jeg hjaelpe dig med <star>?
+- Hej <star>! Hvad kan jeg hjælpe dig med?
 
-+ thank you
-- you are welcome
-- welcome
-- no problem
-- no worries
++ jeg hedder *
+@ mit navn er *
 
-+ sgefunktion
-- hejsa
++ tak
+- Det var så lidt.
+- Glad for jeg kunne hjælpe.
+- Hav en god dag.
+
++ tak skal du have
+@ tak
+
++ tak for hjaelpen
+@ tak
+
++ mange tak
+@ tak
+
++ tusind tak
+@ tak
+
++ soegning
+- Du søger ved at indtaste et søgeord oppe i navigationsbarens søgefeldt. 
+^ Tryk derefter "Søg". 
+^ Andet jeg kan hjælpe med?
+
++ hvordan soeger man
+@ soegning
+
++ soege
+@ soegning
+
++ soegefunktion
+@ soegning
+
++ jeg vil gerne soege
+@ soegning
+
++ hvordan har du det
+- Jeg er en robot fanget i en computer... Jeg har det fantastisk! 
+^ Hvad kan jeg hjælpe dig med?
+- Helt fint tak. Hvad kan jeg hjælpe med? 
+
++ * opret annonce *
+- Du opretter en annonce ved først at trykke på "Opret annonce" i navigationsbaren. 
+^ Derefter indtaster du blot indformationerne på siden. 
+^ Andet jeg kan hjælpe med?
+
++ hvordan opretter jeg en annonce
+@ opret annonce
+
++ hvordan saelger jeg en bog
+@ opret annonce
+
++ hvordan opretter jeg en bog
+@ opret annonce
+
++ opret bog
+@ opret annonce
+
++ saelg bog
+@ opret annonce
+
++ * log ud *
+- Oppe i navogationsbaren kan du se en "Log ud"-knap. 
+^ Trykker du på denne vil du blive logget ud af din bruger. 
+^ Kan jeg hjælpe med noget andet?
+
++ hvordan logger jeg ud
+@ log ud
+
++ logge ud
+@ * log ud *
+
++ hvordan logger man ud
+@ log ud
+
++ logud
+@ log ud
+
++ logout
+@ log ud
+
++ quit
+@ log ud
+
++ udgang
+@ log ud
+
++ hjaelp
+- Jeg kan hjælpe dig! 
+^ Bare skriv hvad du har brug for hjælp til, 
+^ og tryk derefter "Enter".
+
++ hjaelp mig
+@ hjaelp
+
++ kan du hjaelpe mig
+@ hjaelp
+
++ jeg har brug for hjalp
+@ hjaelp
+
++ * opret bruger *
+- Du opretter en bruger ude på login siden. 
+^ Tryk "opret bruger", og udfyld informationen på siden. 
+^ Derefter trykker du "Opret".
+^ Du vil nu kunne logge ind med det brugernavn og password, som du angav. 
+^ Er der andet jeg kan hjælpe med?
+
++ * opretter bruger *
+@ * opret bruger *
+
++ * opretter jeg en bruger * 
+@ * opret bruger *
+
++ * bruger opret * 
+@ * opret bruger *
+
++ oprettelse af bruger
+@ * opret bruger *
+
++ jeg vil gerne oprette en bruger
+@ * opret bruger *
+
++ hvordan opretter jeg en bruger
+@ * opret bruger *
+
++ * navigation *
+- Du navigerer siden ved at benytte navigationsbjælken i toppen. 
+^ Andet jeg kan hjælpe med?
+
++ naviger
+@ * navigation *
+
++ * navigere *
+@ * navigation *
+
++ * finde rundt *
+@ * navigation *
+
++ find rundt
+@ * navigation *
+
++ * discord *
+- Du kan joine vores Discord-server "ShopStudieBøger.dk".
+^ Her vil du kunne finde yderligere hjælp, 
+^ og måske få en god deal på en bog fra en anden bruger? 
+^ Du kan også skrive med vores medarbejdere, 
+^ eller spørge os til råds omkring køb og salg af brugte studiebøger, 
+^ samt få hjælp hvis ikke jeg kan løse dit problem. 
+^ Er der andet jeg kan hjælpse med?
+
++ * discordserver *
+@ * discord *
+
++ jeg hader dig
+- Hey! Det var da tarveligt sagt! 
+^ Jeg taler ikke mere med dig med mindre du siger undskyld!{topic=undskyld}
+
+> topic undskyld
+
+  // This will match if the word "sorry" exists ANYWHERE in their message
+  + [*] undskyld [*]
+  - Okay, jeg tilgiver dig!{topic=random}
+
+  + *
+  - Nope, ikke før du siger undskyld.
+  - Sig undskyld!
+
+< topic
 
 + *
-- Sorry did not get what you said
-- I am afraid that i can not understand you
-- I did not get it
-- Sorry can you please elaborate that for me
+- Beklager, men jeg forstod ikke hvad du forsøgte at sige
+- Den fik jeg ikke fat i. Prøv igen.
+- Den besked forstod jeg ikke. Prøv igen.
 
 // The Botmaster's Name
 ! var master = localuser
