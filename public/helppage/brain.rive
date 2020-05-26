@@ -39,10 +39,31 @@
 + soege
 @ soegning
 
++ * soege
+@ soegning
+
++ * soege *
+@ soegning
+
++ soege *
+@ soegning
+
 + soegefunktion
 @ soegning
 
 + jeg vil gerne soege
+@ soegning
+
++ soeg
+@ soegning
+
++ * soeg
+@ soegning
+
++ soeg *
+@ soegning
+
++ * soeg *
 @ soegning
 
 + hvordan har du det
@@ -50,10 +71,19 @@
 ^ Hvad kan jeg hjælpe dig med?
 - Helt fint tak. Hvad kan jeg hjælpe med? 
 
-+ * opret annonce *
++ opret annonce
 - Du opretter en annonce ved først at trykke på "Opret annonce" i navigationsbaren. 
 ^ Derefter indtaster du blot indformationerne på siden. 
 ^ Andet jeg kan hjælpe med?
+
++ * opret annonce
+@ opret annonce
+
++ * opret annonce *
+@ opret annonce
+
++ opret annonce *
+@ opret annonce
 
 + hvordan opretter jeg en annonce
 @ opret annonce
@@ -70,16 +100,34 @@
 + saelg bog
 @ opret annonce
 
-+ * log ud *
++ * saelg bog
+@ opret annonce
+
++ * saelg bog *
+@ opret annonce
+
++ saelg bog *
+@ opret annonce
+
++ log ud
 - Oppe i navogationsbaren kan du se en "Log ud"-knap. 
 ^ Trykker du på denne vil du blive logget ud af din bruger. 
 ^ Kan jeg hjælpe med noget andet?
+
++ * log ud
+@ log ud
+
++ * log ud *
+@ log ud
+
++ log ud *
+@ log ud
 
 + hvordan logger jeg ud
 @ log ud
 
 + logge ud
-@ * log ud *
+@ log ud
 
 + hvordan logger man ud
 @ log ud
@@ -104,54 +152,66 @@
 + hjaelp mig
 @ hjaelp
 
-+ kan du hjaelpe mig
++ * hjaelpe mig
 @ hjaelp
 
 + jeg har brug for hjalp
 @ hjaelp
 
-+ * opret bruger *
++ opret bruger
 - Du opretter en bruger ude på login siden. 
 ^ Tryk "opret bruger", og udfyld informationen på siden. 
 ^ Derefter trykker du "Opret".
 ^ Du vil nu kunne logge ind med det brugernavn og password, som du angav. 
 ^ Er der andet jeg kan hjælpe med?
 
-+ * opretter bruger *
-@ * opret bruger *
++ * opret bruger *
+@ opret bruger
 
-+ * opretter jeg en bruger * 
-@ * opret bruger *
++ * opret bruger
+@ opret bruger
+
++ opret bruger *
+@ opret bruger
+
++ * opretter bruger *
+@ opret bruger
+
++ * opretter jeg en bruger
+@ opret bruger
 
 + * bruger opret * 
-@ * opret bruger *
+@ opret bruger
 
 + oprettelse af bruger
-@ * opret bruger *
+@ opret bruger
 
 + jeg vil gerne oprette en bruger
-@ * opret bruger *
+@ opret bruger
 
 + hvordan opretter jeg en bruger
-@ * opret bruger *
+@ opret bruger
 
-+ * navigation *
++ navigation
 - Du navigerer siden ved at benytte navigationsbjælken i toppen. 
 ^ Andet jeg kan hjælpe med?
 
 + naviger
-@ * navigation *
+@ navigation
 
 + * navigere *
-@ * navigation *
+@ navigation
+
++ * navigerer *
+@ navigation
 
 + * finde rundt *
-@ * navigation *
+@ navigation
 
 + find rundt
-@ * navigation *
+@ navigation
 
-+ * discord *
++ discord
 - Du kan joine vores Discord-server "ShopStudieBøger.dk".
 ^ Her vil du kunne finde yderligere hjælp, 
 ^ og måske få en god deal på en bog fra en anden bruger? 
@@ -160,8 +220,23 @@
 ^ samt få hjælp hvis ikke jeg kan løse dit problem. 
 ^ Er der andet jeg kan hjælpse med?
 
++ * discord
+@ discord
+
++ discord *
+@ discord
+
++ * discord *
+@ discord
+
 + * discordserver *
-@ * discord *
+@ discord
+
++ * discordserver
+@ discord
+
++ discordserver
+@ discord
 
 + jeg hader dig
 - Hey! Det var da tarveligt sagt! 
