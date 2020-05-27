@@ -138,6 +138,10 @@
 + logout
 @ log ud
 
++ jeg vil gerne logge ud 
+@ log ud
+
+
 + quit
 @ log ud
 
