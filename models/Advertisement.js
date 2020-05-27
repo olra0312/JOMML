@@ -1,4 +1,5 @@
 const { Model } = require('objection');
+
 const User = require('./User.js');
 
 
