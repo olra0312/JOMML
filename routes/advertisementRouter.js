@@ -4,12 +4,17 @@ const fs = require("fs");
 
 
 router.get("/createAdvertisement", (req, res) => {
-    const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
-    const body = fs.readFileSync("./public/createAdvertisement/createAdvertisement.html", "utf8");
-    const foot = fs.readFileSync("./public/footer/footer.html");
+    if(req.session.login){
+        const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
+        const body = fs.readFileSync("./public/createAdvertisement/createAdvertisement.html", "utf8");
+        const foot = fs.readFileSync("./public/footer/footer.html");
 
-    return res.send(head + body + foot);
-})
+        return res.send(head + body + foot);
+    }
+    else{
+    return res.redirect("/login");
+    }
+});
 
 const Advertisement = require("../models/Advertisement.js");
 

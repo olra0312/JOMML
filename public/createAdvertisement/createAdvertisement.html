@@ -1,26 +1,32 @@
-<h1>Opret annonce af bog</h1>
+<h1 style="text-align: center;">Opret annonce af bog</h1>
 
-<form action="/createAdvertisement" method="POST" name="createAdvertisement">
-    <label for="bookName">Navn på bog:</label><br>
-    <input name="bookName" type="text" id="bookName"><br>
+<form action="/createAdvertisement" method="POST" name="createAdvertisement" style="text-align: center; padding-bottom: 2em;">
+    <div class="row">
+        <div class="col-sm">
+            <label for="bookName">Navn på bog:</label><br>
+            <input name="bookName" type="text" id="bookName" class="form-control-sm"><br>
 
-    <label for="author">Forfatter:</label><br>
-    <input type="text" id="author" name="author"><br>
+            <label for="author">Forfatter:</label><br>
+            <input type="text" id="author" name="author" class="form-control-sm"><br>
 
-    <label for="publisher">Forlag:</label><br>
-    <input type="text" id="publisher" name="publisher"><br>
+            <label for="publisher">Forlag:</label><br>
+            <input type="text" id="publisher" name="publisher" class="form-control-sm"><br>
+        </div>
+        <div class="col-sm">
 
-    <label for="isbn">ISBN-nummer:</label><br>
-    <input type="text" id="isbn" name="isbn"><br>
+            <label for="isbn">ISBN-nummer:</label><br>
+            <input type="text" id="isbn" name="isbn" class="form-control-sm"><br>
 
-    <label for="edition">Udgave:</label><br>
-    <input type="text" id="edition" name="edition"><br>
+            <label for="edition">Udgave:</label><br>
+            <input type="text" id="edition" name="edition" class="form-control-sm"><br>
 
-    <label for="price">Pris:</label><br>
-    <input type="text" id="price" name="price"><br>
+            <label for="price">Pris:</label><br>
+            <input type="text" id="price" name="price" class="form-control-sm"><br>
 
-    <label for="condition">Stand af bog:</label>
-    <input type="text" id="condition" name="condition"><br> <!-- Skal i CSS-use casen laves om til en dropdown! -->
+            <label for="condition">Stand af bog:</label><br>
+            <input type="text" id="condition" name="condition" class="form-control-sm"><br> <!-- Skal i CSS-use casen laves om til en dropdown! -->
+        </div>
+    </div>
 
-    <input type="submit" value="Opret annonce for bog">
+    <input type="submit" value="Opret annonce for bog" class="btn btn-primary">
 </form>

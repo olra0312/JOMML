@@ -37,8 +37,15 @@ router.get("/updateUser", (req, res) => {
 }); 
 
 router.get("/login", (req, res) => {
+    if(!req.session.login){
+    const head =fs.readFileSync("./public/navbar/publicNavbar.html", "utf8")
     const page = fs.readFileSync("./public/login/login.html", "utf8")
-    return res.send(page);
+    const foot = fs.readFileSync("./public/footer/footer.html", "utf8")
+    return res.send(head + page + foot);
+    } 
+    else {
+        return res.redirect("/home")
+    }
 });
 
  router.get("/home", (req, res) => {
@@ -47,8 +54,12 @@ router.get("/login", (req, res) => {
         const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
         const page = fs.readFileSync("./public/home/home.html", "utf8");
         return res.send(head + page + foot);
+        
     } else {
-        return res.redirect("/login");
+        const head = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8");
+        const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+        const page = fs.readFileSync("./public/home/home.html", "utf8");
+        return res.send(head + page + foot);
     }
 });
 
