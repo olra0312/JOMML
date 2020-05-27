@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
     from: mailInfo.mail,
-    to: ,
+    to: "",
     subject: "StudieBøger",
     text: req.body.message
 }

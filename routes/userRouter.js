@@ -6,6 +6,11 @@ const session = require('express-session');
 const fs = require("fs");
 
 //GET METHODS
+router.get("/", (req, res) => {
+    const page = fs.readFileSync("./public/login/login.html", "utf8")
+    return res.send(page);
+});
+
 router.get("/createUser", (req, res) => {
     if(!req.session.login){
     const nav = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8"); 
@@ -21,8 +26,14 @@ router.get("/createUser", (req, res) => {
 });
 
 router.get("/updateUser", (req, res) => {
+    if(req.session.login){
+    const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
     const page = fs.readFileSync("./public/createUser/updateUser.html", "utf8");
-    return res.send(page);
+    const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+    return res.send(head + page + foot);
+    } else {
+        return res.redirect("/login");
+    }
 }); 
 
 router.get("/login", (req, res) => {
@@ -138,7 +149,6 @@ router.post("/createUser",(req, res) => {
             }
 
             User.query().insert({
-
                 first_name: req.body.firstName, 
                 last_name: req.body.lastName,
                 email: req.body.email,
@@ -154,8 +164,7 @@ router.post("/createUser",(req, res) => {
   
         } 
         } 
-        } catch {
-                
+        } catch {      
     }
     
     console.log(req.body);
