@@ -1,6 +1,7 @@
 //Setting up the express library from NPM to create a server.
 const express = require("express");
 const app = express();
+const fs = require("fs");
 
 app.use(express.static(__dirname + "/public/helppage"))
 const mysql = require('mysql');
@@ -30,13 +31,16 @@ app.use(advertisementRouter);
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/home'));
-app.use(express.static(__dirname + "/public/createUser"));
+app.use(express.static(__dirname + "/public/user"));
+app.use(express.static(__dirname + "/public/advertisement"));
+app.use(express.static(__dirname + "/public/helppage"));
 app.use(express.static(__dirname + "/public/pictures"));
 
 
- app.get("/help", (req, res) => {
+app.get("/help", (req, res) => {
     return res.sendFile(__dirname + "/public/helppage/helppage.html");
  });
+
 
 //Defining objection model and knex library.
 const { Model } = require("objection");

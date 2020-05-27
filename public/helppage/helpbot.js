@@ -32,7 +32,7 @@ function selfReply(message){
 function botReady(){
   bot.sortReplies();
   botReply('Hejsa!');
-  botReply('Hvad kan jeg hjaelpe med?');
+  botReply('Hvad kan jeg hjælpe med?');
 
 }
 

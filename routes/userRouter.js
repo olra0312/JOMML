@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
 router.get("/createUser", (req, res) => {
     if(!req.session.login){
     const nav = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8"); 
-    const page = fs.readFileSync("./public/createUser/createUser.html", "utf8");
+    const page = fs.readFileSync("./public/user/createUser.html", "utf8");
     const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
 
     return res.send(nav + page + foot);
@@ -28,7 +28,7 @@ router.get("/createUser", (req, res) => {
 router.get("/updateUser", (req, res) => {
     if(req.session.login){
     const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
-    const page = fs.readFileSync("./public/createUser/updateUser.html", "utf8");
+    const page = fs.readFileSync("./public/user/updateUser.html", "utf8");
     const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
     return res.send(head + page + foot);
     } else {
