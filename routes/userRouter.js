@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 
 router.get("/createUser", (req, res) => {
     if(!req.session.login){
-    const nav = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8"); 
+    const nav = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8");
     const page = fs.readFileSync("./public/user/createUser.html", "utf8");
     const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
 
@@ -39,12 +39,12 @@ router.get("/updateUserData", async (req, res) => {
             const city = accountInfo[0].city;
 
             console.log("First name and last name", firstName, lastName);
-            return res.send({ response: { 
+            return res.send({ response: {
                 firstName: firstName, 
                 lastName: lastName,
                 username: username,
                 password: password,
-                email: email, 
+                email: email,
                 phoneNumber: phoneNumber,
                 address: address,
                 zipCode: zipCode,
@@ -64,30 +64,7 @@ router.get("/updateUser", async (req, res) => {
     } else {
         return res.redirect("/login");
     }
-}); 
-
-// router.post('/home', async (req, res) => {
-//     const { username, password } = req.body;
-//     try {
-//         const accountInfo = await User.query().select("id", "username", "password").where("username", username);
-//         if (accountInfo.length !== 1) {
-//             return res.redirect("/login")
-//         }
-//         if (accountInfo.length === 1) {
-//             if (password === accountInfo[0].password) {
-//                 req.session.userId = accountInfo[0].id;
-//                 req.session.login = true;
-//                 req.session.username = username;
-//                 console.log("Session id:", accountInfo[0].id)
-//                 return res.redirect("/home");
-//             } 
-//         }
-//     }
-//     catch(error) {
-//         return res.send(error);
-//     }
-// });
-
+});
 
 router.get("/login", (req, res) => {
     if(!req.session.login){
@@ -95,7 +72,7 @@ router.get("/login", (req, res) => {
     const page = fs.readFileSync("./public/login/login.html", "utf8")
     const foot = fs.readFileSync("./public/footer/footer.html", "utf8")
     return res.send(head + page + foot);
-    } 
+    }
     else {
         return res.redirect("/home")
     }
@@ -107,7 +84,7 @@ router.get("/login", (req, res) => {
         const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
         const page = fs.readFileSync("./public/home/home.html", "utf8");
         return res.send(head + page + foot);
-        
+
     } else {
         const head = fs.readFileSync("./public/navbar/publicNavbar.html", "utf8");
         const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
@@ -123,7 +100,7 @@ router.get("/getUsername", (req, res) => {
 //POST METHODS
 //Validation
 router.post("/createUser",(req, res) => {
-    const { password, 
+    const { password,
             confirmPassword,
             firstName,
             lastName,
@@ -134,11 +111,11 @@ router.post("/createUser",(req, res) => {
             city,
             username } = req.body;
 
-   
+
     try{
         //Password validation
         if (password && confirmPassword && firstName && lastName && email && phoneNumber && address && zipCode && city && username) {
-            
+
             const CapLetterRegex = /[A-Z]+/g
             const NumbersRegex = /[0-9]/g
             const EmailRegex = /[@]+/g
@@ -150,12 +127,12 @@ router.post("/createUser",(req, res) => {
 
                 if (password.length < 8) {
                     return res.status(400).send({ response: "Password must be 8 characters or longer"});
-                } 
-                    
+                }
+
                 if (password !== confirmPassword) {
                     return res.status(400).send({ response: "Password and confirm password needs to be the same"});
-                } 
-                    
+                }
+
                 if (CapLetterRegex.test(password) == false){
                     return res.status(400).send({ response: "Password should contain minimum one capital letter"});
                 }
@@ -163,11 +140,11 @@ router.post("/createUser",(req, res) => {
                 if (NumbersRegex.test(password) == false) {
                     return res.status(400).send({ response: "Password should contain minimum one digit"});
                 }
-                
+
             if (email) {
                 if (!email.match(EmailRegex)) {
                     return res.status(400).send({ response: "Email skal indeholde @"});
-                } 
+                }
             }
 
             if (phoneNumber){
@@ -187,7 +164,7 @@ router.post("/createUser",(req, res) => {
 
                 if (zipCode.length > 4) {
                     return res.status(400).send({ response: "Zipcode must be 4 digits long"});
-                } 
+                }
             }
 
             if(firstName && lastName && address && city && username) {
@@ -213,7 +190,7 @@ router.post("/createUser",(req, res) => {
             }
 
             User.query().insert({
-                first_name: req.body.firstName, 
+                first_name: req.body.firstName,
                 last_name: req.body.lastName,
                 email: req.body.email,
                 phone_number: req.body.phoneNumber,
@@ -222,15 +199,15 @@ router.post("/createUser",(req, res) => {
                 city: req.body.city,
                 username: req.body.username,
                 password: req.body.password
-            }).then(createdUser => { 
+            }).then(createdUser => {
                 return res.redirect("/login")
             })
-  
-        } 
-        } 
-        } catch {      
+
+        }
+        }
+        } catch {
     }
-    
+
     console.log(req.body);
 });
 
@@ -249,7 +226,7 @@ router.post('/home', async (req, res) => {
                 req.session.username = username;
                 console.log("Session id:", accountInfo[0].id)
                 return res.redirect("/home");
-            } 
+            }
         }
     }
     catch(error) {

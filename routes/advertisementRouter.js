@@ -19,18 +19,31 @@ router.get("/createAdvertisement", (req, res) => {
 });
 
 //Router for displaying the list of advertisements added to a certain user
-router.get("/myAdvertisements", async (req, res) => {
+router.get("/myAdvertisementsData", async (req, res) => {
     if(req.session.login) {
-        username = req.session.username;
-        const usersWithAdvertisements = await User.query().select('username').where('username', username).withGraphFetched('advertisements');
-        const advertisements = usersWithAdvertisements[0];
-        const stringAdvertisements = JSON.stringify(advertisements);
-        console.log("Advertisements as strings", stringAdvertisements);
-        return res.send({ response: stringAdvertisements});
+        userId = req.session.userId;
+        const advertisements = await Advertisement.query().
+            select(
+                'user_id',
+                'book_name', 
+                'author', 
+                'publisher', 
+                'isbn', 
+                'edition', 
+                'price', 
+                'condition')
+                .where('user_id', userId);
+                const stringAdvertisements = JSON.stringify(advertisements);
+
+        console.log("Advertisements", advertisements);
+        return res.send({ response: { 
+                advertisements: stringAdvertisements
+            }});    
     } else {
      return res.redirect("/login");
     }
 });
+
 
 router.get("/advertisements", (req, res) => { //Requires login to access
     if(req.session.login) {
@@ -44,24 +57,27 @@ router.get("/advertisements", (req, res) => { //Requires login to access
 });
 
 router.post("/createAdvertisement",(req, res) => {
-    try {
-    Advertisement.query().select().insert({ 
-        book_name: req.body.bookName, 
-        user_id: req.session.userId,
-        author: req.body.author,
-        publisher: req.body.publisher,
-        isbn: req.body.isbn,
-        edition: req.body.edition,
-        price: req.body.price,
-        condition: req.body.condition,
-    }).then(createdAdvertisement => { 
-        return res.send( { response: `The advertisement ${createdAdvertisement.bookName} was created`});
-    }); 
-
-    } catch {
-        
+    if(req.session.login){
+        try {
+            Advertisement.query().select().insert({ 
+                book_name: req.body.bookName, 
+                user_id: req.session.userId,
+                author: req.body.author,
+                publisher: req.body.publisher,
+                isbn: req.body.isbn,
+                edition: req.body.edition,
+                price: req.body.price,
+                condition: req.body.condition,
+            }).then(createdAdvertisement => { 
+                return res.redirect("/createAdvertisement")
+        }); 
+        } catch (error) {
+            res.send(error);
+        } 
+    } else {
+        return res.redirect("/login");
     }
-    console.log(req.body);
+        console.log(req.body);
 });
 
 module.exports = router;

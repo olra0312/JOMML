@@ -10,14 +10,4 @@ $.get("/updateUserData").done(data => { 7
     $("#city").val(data.response.city);
     $("#username").val(data.response.username);
     $("#password").val(data.response.password);
-    
-
-
-
-
-
-
-
-
-
 });
