@@ -9,7 +9,7 @@ router.get("/createAdvertisement", (req, res) => {
     if(req.session.login){
         const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
         const body = fs.readFileSync("./public/advertisement/createAdvertisement.html", "utf8");
-        const foot = fs.readFileSync("./public/footer/footer.html");
+        const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
 
         return res.send(head + body + foot);
     }
@@ -32,11 +32,22 @@ router.get("/myAdvertisements", async (req, res) => {
     }
 });
 
+router.get("/advertisements", (req, res) => { //Requires login to access
+    if(req.session.login) {
+        const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
+        const page = fs.readFileSync("./public/advertisement/showAdvertisements.html", "utf8");
+        const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+        return res.send(head + page + foot);
+    } else {
+        return res.redirect("/login");
+    }
+});
+
 router.post("/createAdvertisement",(req, res) => {
     try {
-        
-    Advertisement.query().insert({ 
+    Advertisement.query().select().insert({ 
         book_name: req.body.bookName, 
+        user_id: req.session.userId,
         author: req.body.author,
         publisher: req.body.publisher,
         isbn: req.body.isbn,

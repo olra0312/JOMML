@@ -13,7 +13,7 @@ exports.seed = function(knex) {
        condition: "testing"
       },
       {book_name: "wetwwttet",
-      user_id: users[2].id,  
+      user_id: users[0].id,  
       author: "werrrr",
       publisher: "testeffwer",
       isbn: 12383333,
@@ -31,7 +31,7 @@ exports.seed = function(knex) {
        condition: "testing"
       },
       {book_name: "ffffttet",
-      user_id: users[1].id,  
+      user_id: users[0].id,  
       author: "werrrr",
       publisher: "testeffwer",
       isbn: 12383333,

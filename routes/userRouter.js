@@ -25,16 +25,46 @@ router.get("/createUser", (req, res) => {
 
 });
 
-router.get("/updateUser", (req, res) => {
+router.get("/updateUser", async (req, res) => {
     if(req.session.login){
-    const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
-    const page = fs.readFileSync("./public/user/updateUser.html", "utf8");
-    const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
-    return res.send(head + page + foot);
+        try {
+            const accountInfo = await User.query().select("first_name", "last_name", "username", "password", "email", "phone_number", "address", "zip_code", "city").where("id", req.session.userId);
+            console.log("Account", accountInfo);
+            req.body = accountInfo;
+            const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
+            const page = fs.readFileSync("./public/user/updateUser.html", "utf8");
+            const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
+        return res.send(head + page + foot);
+        } catch(error) {
+            res.send(error);
+        }
     } else {
         return res.redirect("/login");
     }
 }); 
+
+// router.post('/home', async (req, res) => {
+//     const { username, password } = req.body;
+//     try {
+//         const accountInfo = await User.query().select("id", "username", "password").where("username", username);
+//         if (accountInfo.length !== 1) {
+//             return res.redirect("/login")
+//         }
+//         if (accountInfo.length === 1) {
+//             if (password === accountInfo[0].password) {
+//                 req.session.userId = accountInfo[0].id;
+//                 req.session.login = true;
+//                 req.session.username = username;
+//                 console.log("Session id:", accountInfo[0].id)
+//                 return res.redirect("/home");
+//             } 
+//         }
+//     }
+//     catch(error) {
+//         return res.send(error);
+//     }
+// });
+
 
 router.get("/login", (req, res) => {
     if(!req.session.login){
@@ -185,15 +215,16 @@ router.post("/createUser",(req, res) => {
 router.post('/home', async (req, res) => {
     const { username, password } = req.body;
     try {
-        const accountInfo = await User.query().select("username", "password").where("username", username);
+        const accountInfo = await User.query().select("id", "username", "password").where("username", username);
         if (accountInfo.length !== 1) {
             return res.redirect("/login")
         }
-        
         if (accountInfo.length === 1) {
             if (password === accountInfo[0].password) {
+                req.session.userId = accountInfo[0].id;
                 req.session.login = true;
                 req.session.username = username;
+                console.log("Session id:", accountInfo[0].id)
                 return res.redirect("/home");
             } 
         }
