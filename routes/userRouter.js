@@ -25,19 +25,42 @@ router.get("/createUser", (req, res) => {
 
 });
 
+router.get("/updateUserData", async (req, res) => {
+    if(req.session.login){
+            const accountInfo = await User.query().select("first_name", "last_name", "username", "password", "email", "phone_number", "address", "zip_code", "city").where("id", req.session.userId);
+            const firstName = accountInfo[0].firstName;
+            const lastName = accountInfo[0].lastName;
+            const username = accountInfo[0].username;
+            const password = accountInfo[0].password;
+            const email = accountInfo[0].email;
+            const phoneNumber = accountInfo[0].phoneNumber;
+            const address = accountInfo[0].address;
+            const zipCode = accountInfo[0].zipCode;
+            const city = accountInfo[0].city;
+
+            console.log("First name and last name", firstName, lastName);
+            return res.send({ response: { 
+                firstName: firstName, 
+                lastName: lastName,
+                username: username,
+                password: password,
+                email: email, 
+                phoneNumber: phoneNumber,
+                address: address,
+                zipCode: zipCode,
+                city: city
+                }});
+    } else {
+        return res.redirect("/login");
+    }
+});
+
 router.get("/updateUser", async (req, res) => {
     if(req.session.login){
-        try {
-            const accountInfo = await User.query().select("first_name", "last_name", "username", "password", "email", "phone_number", "address", "zip_code", "city").where("id", req.session.userId);
-            console.log("Account", accountInfo);
-            req.body = accountInfo;
             const head = fs.readFileSync("./public/navbar/navbar.html", "utf8");
             const page = fs.readFileSync("./public/user/updateUser.html", "utf8");
             const foot = fs.readFileSync("./public/footer/footer.html", "utf8");
         return res.send(head + page + foot);
-        } catch(error) {
-            res.send(error);
-        }
     } else {
         return res.redirect("/login");
     }
