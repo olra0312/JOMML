@@ -7,8 +7,7 @@ const fs = require("fs");
 
 //GET METHODS
 router.get("/", (req, res) => {
-    const page = fs.readFileSync("./public/login/login.html", "utf8")
-    return res.send(page);
+    return res.redirect("/home");
 });
 
 router.get("/createUser", (req, res) => {
